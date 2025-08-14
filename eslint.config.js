@@ -5,6 +5,7 @@ import reactRefresh from 'eslint-plugin-react-refresh';
 import tseslint from 'typescript-eslint';
 import { globalIgnores } from 'eslint/config';
 import pluginRouter from '@tanstack/eslint-plugin-router';
+import pluginQuery from '@tanstack/eslint-plugin-query';
 
 export default tseslint.config([
 	globalIgnores(['dist']),
@@ -12,6 +13,7 @@ export default tseslint.config([
 		files: ['**/*.{ts,tsx}'],
 		plugins: {
 			'@tanstack/router': pluginRouter,
+			'@tanstack/query': pluginQuery,
 		},
 		extends: [
 			js.configs.recommended,
@@ -21,6 +23,8 @@ export default tseslint.config([
 		],
 		rules: {
 			'@tanstack/router/create-route-property-order': 'error',
+			'@tanstack/query/exhaustive-deps': 'warn',
+			'@tanstack/query/stable-query-client': 'error',
 		},
 		languageOptions: {
 			ecmaVersion: 2020,
