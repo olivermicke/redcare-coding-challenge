@@ -3,8 +3,8 @@ import { CircleIcon, EyeIcon, GitForkIcon, StarIcon } from 'lucide-react';
 import { useGetRepos } from '@/api';
 
 import { AriaLiveWrapper } from './aria-live-wrapper';
-import { getHexCodeForLanguage, getOneWeekAgoFormattedDate } from './utils';
 import { InfoTextWrapper } from './info-text-wrapper';
+import { getHexCodeForLanguage, getOneWeekAgoFormattedDate } from './utils';
 
 type Props = {
 	ariaLabel: string;

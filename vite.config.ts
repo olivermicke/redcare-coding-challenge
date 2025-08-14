@@ -1,10 +1,11 @@
 import tailwindcss from '@tailwindcss/vite';
 import { tanstackRouter } from '@tanstack/router-plugin/vite';
 import react from '@vitejs/plugin-react-swc';
-import { defineConfig, type UserConfig } from 'vite';
 import path from 'node:path';
+import { defineConfig, type UserConfig } from 'vite';
 
 export default defineConfig({
+	base: '/redcare-coding-challenge/',
 	plugins: [
 		tailwindcss(),
 		tanstackRouter({

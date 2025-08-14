@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
-import { describe, expect, it } from 'vitest';
 import userEvent from '@testing-library/user-event';
+import { describe, expect, it } from 'vitest';
 
 import { ApiClientContext, type RepoDto } from '@/api';
 import { TestAppProvider } from '@/test-utils/test-app-provider';

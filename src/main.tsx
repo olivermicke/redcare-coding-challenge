@@ -1,11 +1,17 @@
 import { StrictMode } from 'react';
-import { createRouter, RouterProvider } from '@tanstack/react-router';
+import { createHashHistory, createRouter, RouterProvider } from '@tanstack/react-router';
 import ReactDOM from 'react-dom/client';
 
 import { AppProvider } from './app-provider';
 import { routeTree } from './routeTree.gen';
 
-const router = createRouter({ routeTree });
+// Needed for GitHub Pages.
+const hashHistory = createHashHistory();
+
+const router = createRouter({
+	routeTree,
+	history: hashHistory,
+});
 
 declare module '@tanstack/react-router' {
 	interface Register {

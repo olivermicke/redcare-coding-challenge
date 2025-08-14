@@ -1,5 +1,9 @@
 # Redcare Coding Challenge
 
+## Demo
+
+https://olivermicke.github.io/redcare-coding-challenge/
+
 ## Installation instructions
 
     pnpm install
