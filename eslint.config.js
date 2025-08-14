@@ -7,6 +7,7 @@ import { globalIgnores } from 'eslint/config';
 import pluginRouter from '@tanstack/eslint-plugin-router';
 import pluginQuery from '@tanstack/eslint-plugin-query';
 import simpleImportSort from 'eslint-plugin-simple-import-sort';
+import reactCompiler from 'eslint-plugin-react-compiler';
 
 export default tseslint.config([
 	globalIgnores(['dist']),
@@ -16,6 +17,7 @@ export default tseslint.config([
 			'@tanstack/router': pluginRouter,
 			'@tanstack/query': pluginQuery,
 			'simple-import-sort': simpleImportSort,
+			'react-compiler': reactCompiler,
 		},
 		extends: [
 			js.configs.recommended,
@@ -27,6 +29,7 @@ export default tseslint.config([
 			'@tanstack/router/create-route-property-order': 'error',
 			'@tanstack/query/exhaustive-deps': 'warn',
 			'@tanstack/query/stable-query-client': 'error',
+			'react-compiler/react-compiler': 'error',
 			'simple-import-sort/imports': [
 				'warn',
 				{

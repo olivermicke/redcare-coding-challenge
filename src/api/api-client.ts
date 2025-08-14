@@ -1,10 +1,10 @@
 import z from 'zod';
 
-import { repoSchema } from './schemas';
-import { type GetReposOptions, type Repo } from './types';
+import { repoDtoSchema } from './schemas';
+import { type GetReposOptions, type RepoDto } from './types';
 
 export interface IApiClient {
-	getRepos: (options: GetReposOptions) => Promise<Repo[]>;
+	getRepos: (options: GetReposOptions) => Promise<RepoDto[]>;
 }
 
 export class ApiClient implements IApiClient {
@@ -21,7 +21,7 @@ export class ApiClient implements IApiClient {
 		try {
 			const response = await fetch(url);
 			if (!response.ok) {
-				throw new Error(`HTTP error! status: ${response.status}`);
+				throw new Error(`HTTP error! Status code: ${response.status}`);
 			}
 
 			const data = await response.json();
@@ -29,7 +29,7 @@ export class ApiClient implements IApiClient {
 				throw new Error('Empty items');
 			}
 
-			const repos = z.parse(repoSchema.array(), data.items);
+			const repos = z.parse(repoDtoSchema.array(), data.items);
 			return repos;
 		} catch (error) {
 			console.error('Error fetching repositories:', error);

@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-import type { repoSchema } from './schemas';
+import type { repoDtoSchema } from './schemas';
 
 export type GetReposOptions = {
 	createdAfter: string;
@@ -8,4 +8,17 @@ export type GetReposOptions = {
 	sort: 'stars';
 };
 
-export type Repo = z.infer<typeof repoSchema>;
+export type RepoDto = z.infer<typeof repoDtoSchema>;
+
+export type Repo = {
+	id: number;
+	name: string;
+	owner: string;
+	externalLink: string;
+	isStarred: boolean;
+	description: string | null;
+	starsCount: number;
+	forksCount: number;
+	watchersCount: number;
+	language: string | null;
+};

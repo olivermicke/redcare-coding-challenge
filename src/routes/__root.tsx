@@ -1,31 +1,27 @@
-import { createRootRoute, Link, Outlet } from '@tanstack/react-router';
+import { createRootRoute, Outlet } from '@tanstack/react-router';
 import { TanStackRouterDevtools } from '@tanstack/react-router-devtools';
+
+import { MainNavigation } from '@/components/main-navigation';
 
 export const Route = createRootRoute({
 	component: () => (
-		<>
-			<nav aria-label="Main">
-				<ul className="p-2 flex gap-2">
-					<li>
-						<Link to="/" className="[&.active]:font-bold">
-							Discover
-						</Link>{' '}
-					</li>
-					<li>
-						<Link to="/starred" className="[&.active]:font-bold">
-							Starred
-						</Link>
-					</li>
-				</ul>
+		<div className="py-6">
+			<div className="py-6 text-center border-1 border-l-0 border-r-0 border-gray-300 bg-gray-50">
+				<h1 className="text-3xl text-gray-900 font-semibold leading-tight">Trending</h1>
+				<p className="text-lg text-gray-500 leading-tight">
+					See which new GitHub repos everyone’s excited about this week.
+				</p>
+			</div>
 
-				<hr aria-hidden />
-			</nav>
+			<div className="mx-auto max-w-3xl">
+				<MainNavigation />
 
-			<main>
-				<Outlet />
-			</main>
+				<main>
+					<Outlet />
+				</main>
+			</div>
 
-			<TanStackRouterDevtools />
-		</>
+			{!import.meta.env.PROD && <TanStackRouterDevtools />}
+		</div>
 	),
 });

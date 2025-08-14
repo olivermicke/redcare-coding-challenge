@@ -1,7 +1,9 @@
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { createAsyncStoragePersister } from '@tanstack/query-async-storage-persister';
+import { QueryClient } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import { PersistQueryClientProvider } from '@tanstack/react-query-persist-client';
 
-import { ApiClient, ApiClientContext, GITHUB_API_BASE_URL } from './api';
+import { ApiClient, ApiClientContext, GITHUB_API_BASE_URL } from '@/api';
 
 type Props = { children: React.ReactNode };
 
@@ -9,9 +11,14 @@ const queryClient = new QueryClient({
 	defaultOptions: {
 		queries: {
 			retry: false,
-			staleTime: 900_000, // 15min
+			gcTime: 1000 * 60 * 60 * 24, // 1 day
+			staleTime: 1000 * 60 * 60, // 1 hour
 		},
 	},
+});
+
+const persister = createAsyncStoragePersister({
+	storage: window.localStorage,
 });
 
 export function AppProvider({ children }: Props) {
@@ -19,10 +26,10 @@ export function AppProvider({ children }: Props) {
 
 	return (
 		<ApiClientContext.Provider value={{ apiClient }}>
-			<QueryClientProvider client={queryClient}>
+			<PersistQueryClientProvider client={queryClient} persistOptions={{ persister }}>
 				{children}
 				{!import.meta.env.PROD && <ReactQueryDevtools initialIsOpen={false} />}
-			</QueryClientProvider>
+			</PersistQueryClientProvider>
 		</ApiClientContext.Provider>
 	);
 }
