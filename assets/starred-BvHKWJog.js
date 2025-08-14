@@ -1,0 +1,1 @@
+import{j as e}from"./index-4xoPRQfh.js";import{R as t}from"./repo-list-qOLkNB36.js";function r(){return e.jsx(e.Fragment,{children:e.jsx(t,{ariaLabel:"Starred Trending Repos",emptyState:e.jsx("p",{children:"No repos starred yet."}),filters:{starredOnly:!0}})})}const p=function(){return e.jsx(r,{})};export{p as component};
