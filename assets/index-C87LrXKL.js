@@ -1,0 +1,1 @@
+import{j as n}from"./index-CKCEW5he.js";import{R as o}from"./repo-list-Bt22nxo4.js";function e(){return n.jsx(n.Fragment,{children:n.jsx(o,{ariaLabel:"Trending Repos"})})}const s=function(){return n.jsx(e,{})};export{s as component};
