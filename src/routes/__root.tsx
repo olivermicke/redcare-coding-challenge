@@ -17,9 +17,14 @@ export const Route = createRootRoute({
 						</Link>
 					</li>
 				</ul>
+
+				<hr aria-hidden />
 			</nav>
-			<hr aria-hidden />
-			<Outlet />
+
+			<main>
+				<Outlet />
+			</main>
+
 			<TanStackRouterDevtools />
 		</>
 	),
